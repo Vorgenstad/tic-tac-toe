@@ -1,6 +1,10 @@
-[gd_scene format=3 uid="uid://hvp6prorlex"]
+[gd_scene load_steps=3 format=3 uid="uid://hvp6prorlex"]
+
+[ext_resource type="Script" path="res://scenes/board.gd" id="1_53c1p"]
+[ext_resource type="PackedScene" uid="uid://ci5e8ms1dgg2d" path="res://scenes/cell.tscn" id="1_b38a3"]
 
 [node name="Board" type="CanvasLayer"]
+script = ExtResource("1_53c1p")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 anchors_preset = 15
@@ -12,47 +16,29 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 3
 
-[node name="Button" type="Button" parent="GridContainer"]
+[node name="Cell00" parent="GridContainer" instance=ExtResource("1_b38a3")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
-[node name="Button2" type="Button" parent="GridContainer"]
+[node name="Cell01" parent="GridContainer" instance=ExtResource("1_b38a3")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
-[node name="Button3" type="Button" parent="GridContainer"]
+[node name="Cell02" parent="GridContainer" instance=ExtResource("1_b38a3")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
-[node name="Button4" type="Button" parent="GridContainer"]
+[node name="Cell10" parent="GridContainer" instance=ExtResource("1_b38a3")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
-[node name="Button5" type="Button" parent="GridContainer"]
+[node name="Cell11" parent="GridContainer" instance=ExtResource("1_b38a3")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
-[node name="Button6" type="Button" parent="GridContainer"]
+[node name="Cell12" parent="GridContainer" instance=ExtResource("1_b38a3")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
-[node name="Button7" type="Button" parent="GridContainer"]
+[node name="Cell20" parent="GridContainer" instance=ExtResource("1_b38a3")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
-[node name="Button8" type="Button" parent="GridContainer"]
+[node name="Cell21" parent="GridContainer" instance=ExtResource("1_b38a3")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
-[node name="Button9" type="Button" parent="GridContainer"]
+[node name="Cell22" parent="GridContainer" instance=ExtResource("1_b38a3")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
