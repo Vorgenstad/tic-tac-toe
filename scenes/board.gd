@@ -1,6 +1,11 @@
 extends CanvasLayer
 
+signal cell_pressed(x: int, y: int)
+
 @onready var _grid := _initialize_grid()
+
+func mark_cell(x: int, y: int, value: Constants.CellValue) -> void:
+	_grid[x][y].mark(value)
 
 func _initialize_grid() -> Array:
 	var grid = [[], [], []]
@@ -18,4 +23,4 @@ func _initialize_grid() -> Array:
 	return grid
 
 func _on_cell_pressed(x: int, y: int) -> void:
-	_grid[x][y].test()
+	cell_pressed.emit(x, y)

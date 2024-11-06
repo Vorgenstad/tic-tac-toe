@@ -9,5 +9,8 @@ func initialize(x: int, y: int) -> void:
     _x = x
     _y = y
 
-func test() -> void:
-    print("pressed " + str(_x) + str(_y))
+func mark(value: Constants.CellValue) -> void:
+    if value == Constants.CellValue.X:
+        text = "X"
+    else:
+        text = "O"
