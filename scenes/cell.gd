@@ -14,3 +14,5 @@ func mark(value: Constants.CellValue) -> void:
         text = "X"
     else:
         text = "O"
+
+    disabled = true
