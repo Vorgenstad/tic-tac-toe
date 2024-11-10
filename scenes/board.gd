@@ -1,3 +1,4 @@
+class_name Board
 extends CanvasLayer
 
 signal cell_pressed(x: int, y: int)
@@ -7,8 +8,11 @@ signal cell_pressed(x: int, y: int)
 func mark_cell(x: int, y: int, value: Constants.CellValue) -> void:
 	_grid[x][y].mark(value)
 
+func get_value(x: int, y: int) -> Constants.CellValue:
+	return _grid[x][y].value
+
 func _initialize_grid() -> Array:
-	var grid = [[], [], []]
+	var empty_grid = [[], [], []]
 
 	for x in 3:
 		for y in 3:
@@ -18,9 +22,9 @@ func _initialize_grid() -> Array:
 
 			cell.connect("pressed", _on_cell_pressed.bind(x, y))
 
-			grid[x].append(cell)
+			empty_grid[x].append(cell)
 	
-	return grid
+	return empty_grid
 
 func _on_cell_pressed(x: int, y: int) -> void:
 	cell_pressed.emit(x, y)
