@@ -1,13 +1,19 @@
 extends Node2D
 
-var _current_value = Constants.CellValue.X
+var _current_value := Constants.CellValue.X
+var _plays := 0 
 
 @onready var _board: Board = %Board
 
 func _on_board_cell_pressed(x: int, y: int) -> void:
 	_board.mark_cell(x, y, _current_value)
 
+	_plays = _plays + 1
+
 	_check_win()
+
+	if (_plays == 9):
+		_game_over(0)
 
 	_current_value = Constants.CellValue.O if _current_value == Constants.CellValue.X else Constants.CellValue.X
 
@@ -43,4 +49,10 @@ func _check_winning_points(points: int) -> bool:
 	return points == 3 || points == -3
 
 func _game_over(points: int) -> void:
-	print("Game over with points: " + str(points))
+	match points:
+		3:
+			print("X won")
+		-3:
+			print("O won")
+		_:
+			print("draw")

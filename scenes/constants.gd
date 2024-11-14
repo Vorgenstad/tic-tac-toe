@@ -6,3 +6,10 @@ enum CellValue
     X,
     O,
 }
+
+enum Winner
+{
+    NONE,
+    X,
+    O
+}
