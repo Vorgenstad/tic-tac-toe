@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://obpy71unsy5c"]
+[gd_scene load_steps=4 format=3 uid="uid://obpy71unsy5c"]
 
 [ext_resource type="PackedScene" uid="uid://hvp6prorlex" path="res://scenes/board.tscn" id="1_ggurm"]
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_j3p2g"]
+[ext_resource type="PackedScene" uid="uid://bbj7g3m2xv5no" path="res://scenes/ui.tscn" id="3_avdt8"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_j3p2g")
+
+[node name="UI" parent="." instance=ExtResource("3_avdt8")]
+unique_name_in_owner = true
+visible = false
 
 [node name="Board" parent="." instance=ExtResource("1_ggurm")]
 unique_name_in_owner = true
