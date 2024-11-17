@@ -60,3 +60,6 @@ func _get_winner(points: int) -> Constants.Winner:
 		3: return Constants.Winner.X
 		-3: return Constants.Winner.O
 		_: return Constants.Winner.NONE
+
+func _on_ui_restart_actioned() -> void:
+	get_tree().reload_current_scene()

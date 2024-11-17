@@ -7,11 +7,12 @@
 [node name="Game" type="Node2D"]
 script = ExtResource("1_j3p2g")
 
+[node name="Board" parent="." instance=ExtResource("1_ggurm")]
+unique_name_in_owner = true
+
 [node name="UI" parent="." instance=ExtResource("3_avdt8")]
 unique_name_in_owner = true
 visible = false
 
-[node name="Board" parent="." instance=ExtResource("1_ggurm")]
-unique_name_in_owner = true
-
 [connection signal="cell_pressed" from="Board" to="." method="_on_board_cell_pressed"]
+[connection signal="restart_actioned" from="UI" to="." method="_on_ui_restart_actioned"]
