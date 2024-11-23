@@ -1,3 +1,4 @@
+class_name Game
 extends Node2D
 
 var _current_value := Constants.CellValue.X
