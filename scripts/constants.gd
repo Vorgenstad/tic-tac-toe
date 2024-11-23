@@ -2,14 +2,14 @@ class_name Constants
 
 enum CellValue
 {
-    EMPTY,
-    X,
-    O,
+	EMPTY,
+	X,
+	O,
 }
 
 enum Winner
 {
-    NONE,
-    X,
-    O
+	NONE,
+	X,
+	O
 }
