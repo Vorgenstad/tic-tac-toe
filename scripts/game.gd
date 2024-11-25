@@ -12,14 +12,14 @@ func _on_board_cell_pressed(x: int, y: int) -> void:
 
 	_plays = _plays + 1
 
-	_check_win()
+	var is_win := _check_win()
 
-	if (_plays == 9):
+	if (!is_win && _plays == 9):
 		_game_over(0)
 
 	_current_value = Constants.CellValue.O if _current_value == Constants.CellValue.X else Constants.CellValue.X
 
-func _check_win() -> void:
+func _check_win() -> bool:
 	var line_points = []
 
 	line_points.append(_get_points(_board.get_value(0, 0), _board.get_value(0, 1), _board.get_value(0, 2)))
@@ -34,6 +34,9 @@ func _check_win() -> void:
 	for points in line_points:
 		if _check_winning_points(points):
 			_game_over(points)
+			return true
+	
+	return false
 
 func _get_points(value1: Constants.CellValue, value2: Constants.CellValue, value3: Constants.CellValue) -> int:
 	return _get_cell_value_points(value1) + _get_cell_value_points(value2) + _get_cell_value_points(value3)
