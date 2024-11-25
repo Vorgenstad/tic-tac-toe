@@ -1,9 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://ci5e8ms1dgg2d"]
+[gd_scene load_steps=6 format=3 uid="uid://ci5e8ms1dgg2d"]
 
 [ext_resource type="Script" path="res://scripts/cell.gd" id="1_la51s"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfm15"]
+bg_color = Color(0, 0, 0, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvogg"]
 bg_color = Color(0.106237, 0.106237, 0.106237, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fl0pn"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lo78o"]
 bg_color = Color(0, 0, 0, 1)
@@ -16,7 +22,10 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 200
+theme_override_styles/disabled = SubResource("StyleBoxFlat_hfm15")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hvogg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fl0pn")
 theme_override_styles/normal = SubResource("StyleBoxFlat_lo78o")
 script = ExtResource("1_la51s")
