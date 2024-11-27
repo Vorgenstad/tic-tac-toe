@@ -3,16 +3,12 @@ extends CanvasLayer
 
 signal cell_pressed(x: int, y: int)
 
-@onready var _grid := _initialize_grid()
+var lines: Array
 
-func mark_cell(x: int, y: int, value: Constants.CellValue) -> void:
-	_grid[x][y].mark(value)
+var _grid: Array
 
-func get_value(x: int, y: int) -> Constants.CellValue:
-	return _grid[x][y].value
-
-func _initialize_grid() -> Array:
-	var empty_grid = [[], [], []]
+func _ready() -> void:
+	_grid = [[], [], []]
 
 	for x in 3:
 		for y in 3:
@@ -22,9 +18,21 @@ func _initialize_grid() -> Array:
 
 			cell.connect("pressed", _on_cell_pressed.bind(x, y))
 
-			empty_grid[x].append(cell)
+			_grid[x].append(cell)
 	
-	return empty_grid
+	lines = [
+		[_grid[0][0], _grid[0][1], _grid[0][2]],
+		[_grid[1][0], _grid[1][1], _grid[1][2]],
+		[_grid[2][0], _grid[2][1], _grid[2][2]],
+		[_grid[0][0], _grid[1][0], _grid[2][0]],
+		[_grid[0][1], _grid[1][1], _grid[2][1]],
+		[_grid[0][2], _grid[1][2], _grid[2][2]],
+		[_grid[0][0], _grid[1][1], _grid[2][2]],
+		[_grid[0][2], _grid[1][1], _grid[2][0]],
+	]
+
+func mark_cell(x: int, y: int, value: Constants.CellValue) -> void:
+	_grid[x][y].mark(value)
 
 func _on_cell_pressed(x: int, y: int) -> void:
 	cell_pressed.emit(x, y)
