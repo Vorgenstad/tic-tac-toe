@@ -34,5 +34,10 @@ func _ready() -> void:
 func mark_cell(x: int, y: int, value: Constants.CellValue) -> void:
 	_grid[x][y].mark(value)
 
+func disable() -> void:
+	for row in _grid:
+		for cell in row:
+			cell.disabled = true
+
 func _on_cell_pressed(x: int, y: int) -> void:
 	cell_pressed.emit(x, y)

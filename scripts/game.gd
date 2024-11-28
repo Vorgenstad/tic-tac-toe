@@ -45,6 +45,8 @@ func _check_winning_points(points: int) -> bool:
 	return points == 3 || points == -3
 
 func _game_over(points: int, winning_line: Array) -> void:
+	_board.disable()
+
 	var winner := _get_winner(points)
 
 	if winner == Constants.Winner.NONE:
