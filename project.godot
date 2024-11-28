@@ -19,6 +19,7 @@ boot_splash/bg_color=Color(0, 0, 0, 1)
 
 window/size/viewport_width=1000
 window/size/viewport_height=1000
+window/size/resizable=false
 
 [gui]
 
