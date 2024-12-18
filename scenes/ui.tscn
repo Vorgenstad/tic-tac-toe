@@ -22,6 +22,37 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer"]
 layout_mode = 2
 
+[node name="ScoreContainer" type="CenterContainer" parent="PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer/ScoreContainer"]
+layout_mode = 2
+theme_override_constants/separation = 200
+
+[node name="XContainer" type="HBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer/ScoreContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="XLabel" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/ScoreContainer/HBoxContainer/XContainer"]
+layout_mode = 2
+text = "X:"
+
+[node name="XScoreLabel" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/ScoreContainer/HBoxContainer/XContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
+[node name="OContainer" type="HBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer/ScoreContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="OLabel" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/ScoreContainer/HBoxContainer/OContainer"]
+layout_mode = 2
+text = "O:"
+
+[node name="OScoreLabel" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer/ScoreContainer/HBoxContainer/OContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+
 [node name="InfoLabel" type="Label" parent="PanelContainer/CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2

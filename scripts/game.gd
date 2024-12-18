@@ -7,6 +7,8 @@ var _plays := 0
 @onready var _board: Board = %Board
 @onready var _ui: UI = %UI
 
+@onready var _session := Session.new()
+
 func reset() -> void:
 	_current_value = Constants.CellValue.X
 	_plays = 0
@@ -55,6 +57,8 @@ func _game_over(points: int, winning_line: Array) -> void:
 
 	var winner := _get_winner(points)
 
+	_session.add_win(winner)
+
 	if winner == Constants.Winner.NONE:
 		_display_game_over(winner)
 		return
@@ -65,7 +69,7 @@ func _game_over(points: int, winning_line: Array) -> void:
 
 func _display_game_over(winner: Constants.Winner) -> void:
 	_ui.visible = true
-	_ui.display_game_over(winner)
+	_ui.display_game_over(winner, _session)
 
 func _get_winner(points: int) -> Constants.Winner:
 	match points:
