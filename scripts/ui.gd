@@ -8,9 +8,9 @@ signal restart_actioned
 func display_game_over(winner: Constants.Winner) -> void:
 	match winner:
 		Constants.Winner.X:
-			_info_label.text = "X won"
+			_info_label.text = "X wins"
 		Constants.Winner.O:
-			_info_label.text = "O won"
+			_info_label.text = "O wins"
 		Constants.Winner.NONE:
 			_info_label.text = "Draw"
 
