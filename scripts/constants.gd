@@ -13,3 +13,9 @@ enum Winner
 	X,
 	O
 }
+
+enum SecondPlayerType
+{
+	HUMAN,
+	CPU,
+}

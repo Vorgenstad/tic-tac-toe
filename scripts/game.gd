@@ -1,31 +1,40 @@
 class_name Game
 extends Node2D
 
-var _current_value := Constants.CellValue.X
 var _plays := 0
 
-@onready var _board: Board = %Board
-@onready var _ui: UI = %UI
+var _x_player: Player
+var _o_player: Player
+
+var _current_player : Player
+
+@onready var _board: Board
+@onready var _ui: UI
 
 @onready var _session := Session.new()
 
-func reset() -> void:
-	_current_value = Constants.CellValue.X
-	_plays = 0
+func initialize(x_player: Player, o_player: Player) -> void:
+	_x_player = x_player
+	_o_player = o_player
 	
+func _ready() -> void:
+	_board = %Board
+	_ui = %UI
+
+	_x_player.initialize(_board)
+	_o_player.initialize(_board)
+
+	_current_player = _x_player
+
+	_current_player.play()
+
+func reset() -> void:
+	_current_player = _x_player
+	_plays = 0
+
 	_board.reset()
 
-func _on_board_cell_pressed(x: int, y: int) -> void:
-	_board.mark_cell(x, y, _current_value)
-
-	_plays = _plays + 1
-
-	var is_win := _check_win()
-
-	if (!is_win && _plays == 9):
-		_game_over(0, [])
-
-	_current_value = Constants.CellValue.O if _current_value == Constants.CellValue.X else Constants.CellValue.X
+	_current_player.play()
 
 func _check_win() -> bool:
 	for line in _board.lines:
@@ -76,6 +85,22 @@ func _get_winner(points: int) -> Constants.Winner:
 		3: return Constants.Winner.X
 		-3: return Constants.Winner.O
 		_: return Constants.Winner.NONE
+
+func _on_board_cell_marked() -> void:
+	_plays = _plays + 1
+
+	var is_win := _check_win()
+
+	if (!is_win):
+		if (_plays == 9):
+			_game_over(0, [])
+		else:
+			_next_turn()
+
+func _next_turn() -> void:
+	_current_player = _x_player if _current_player == _o_player else _o_player
+
+	_current_player.play()
 
 func _on_ui_restart_actioned() -> void:
 	_ui.visible = false

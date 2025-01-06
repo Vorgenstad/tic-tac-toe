@@ -2,6 +2,7 @@ class_name Board
 extends CanvasLayer
 
 signal cell_pressed(x: int, y: int)
+signal cell_marked()
 
 var lines: Array
 
@@ -48,10 +49,13 @@ func reset() -> void:
 func mark_cell(x: int, y: int, value: Constants.CellValue) -> void:
 	_grid[x][y].mark(value)
 
+	cell_marked.emit()
+
 func disable() -> void:
 	for row in _grid:
 		for cell in row:
-			cell.disabled = true
+			if !cell.marked:
+				cell.disabled = true
 
 func draw_winning_line(winning_line: Array) -> Tween:
 	var first_cell_center = _get_cell_center(winning_line[0])

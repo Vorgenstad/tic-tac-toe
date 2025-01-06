@@ -3,6 +3,7 @@ class_name Cell
 extends Button
 
 var value := Constants.CellValue.EMPTY
+var marked := value != Constants.CellValue.EMPTY
 
 func reset() -> void:
 	text = ""
