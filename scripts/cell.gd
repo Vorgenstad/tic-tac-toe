@@ -2,6 +2,8 @@ class_name Cell
 
 extends Button
 
+signal cell_marked(cell: Cell)
+
 var value := Constants.CellValue.EMPTY
 var marked := value != Constants.CellValue.EMPTY
 
@@ -19,3 +21,5 @@ func mark(value_to_mark: Constants.CellValue) -> void:
 		text = "O"
 
 	disabled = true
+
+	cell_marked.emit(self)

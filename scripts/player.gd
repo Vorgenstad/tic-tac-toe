@@ -13,6 +13,3 @@ func initialize(board: Board) -> void:
 
 func play() -> void:
 	pass
-
-func _on_board_cell_pressed(x: int, y: int) -> void:
-	_board.mark_cell(x, y, value)

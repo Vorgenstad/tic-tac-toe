@@ -52,3 +52,13 @@ layout_mode = 2
 
 [node name="Cell22" parent="GridContainer" instance=ExtResource("1_b38a3")]
 layout_mode = 2
+
+[connection signal="cell_marked" from="GridContainer/Cell00" to="." method="_on_cell_marked"]
+[connection signal="cell_marked" from="GridContainer/Cell01" to="." method="_on_cell_marked"]
+[connection signal="cell_marked" from="GridContainer/Cell02" to="." method="_on_cell_marked"]
+[connection signal="cell_marked" from="GridContainer/Cell10" to="." method="_on_cell_marked"]
+[connection signal="cell_marked" from="GridContainer/Cell11" to="." method="_on_cell_marked"]
+[connection signal="cell_marked" from="GridContainer/Cell12" to="." method="_on_cell_marked"]
+[connection signal="cell_marked" from="GridContainer/Cell20" to="." method="_on_cell_marked"]
+[connection signal="cell_marked" from="GridContainer/Cell21" to="." method="_on_cell_marked"]
+[connection signal="cell_marked" from="GridContainer/Cell22" to="." method="_on_cell_marked"]

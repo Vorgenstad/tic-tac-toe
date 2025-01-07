@@ -7,8 +7,6 @@ func initialize(board: Board) -> void:
 func play() -> void:
 	_board.cell_pressed.connect(_on_board_cell_pressed)
 
-	# _board.enable()
-
 func _on_board_cell_pressed(x: int, y: int) -> void:
 	_board.cell_pressed.disconnect(_on_board_cell_pressed)
 

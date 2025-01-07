@@ -2,6 +2,6 @@ class_name CpuPlayer
 extends Player
 
 func play() -> void:
-	var random_cell := Vector2(randi_range(0, 2), randi_range(0, 2))
+	var random_cell := _board.available_cells[randi() % _board.available_cells.size()]
 
-	_board.mark_cell(int(random_cell.x), int(random_cell.y), value)
+	random_cell.mark(value)

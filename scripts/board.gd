@@ -5,6 +5,7 @@ signal cell_pressed(x: int, y: int)
 signal cell_marked()
 
 var lines: Array
+var available_cells: Array[Cell]
 
 var _grid: Array
 var _line: Line2D
@@ -19,6 +20,7 @@ func _ready() -> void:
 			cell.connect("pressed", _on_cell_pressed.bind(x, y))
 
 			_grid[x].append(cell)
+			available_cells.append(cell)
 	
 	lines = [
 		[_grid[0][0], _grid[0][1], _grid[0][2]],
@@ -40,16 +42,19 @@ func _ready() -> void:
 	add_child(_line)
 
 func reset() -> void:
+	available_cells.clear()
+
 	for row in _grid:
 		for cell in row:
 			cell.reset()
+			available_cells.append(cell)
 
 	_line.clear_points()
 
 func mark_cell(x: int, y: int, value: Constants.CellValue) -> void:
 	_grid[x][y].mark(value)
 
-	cell_marked.emit()
+	available_cells.erase(_grid[x][y])
 
 func disable() -> void:
 	for row in _grid:
@@ -81,3 +86,8 @@ func _get_cell_center(cell: Cell) -> Vector2:
 
 func _on_cell_pressed(x: int, y: int) -> void:
 	cell_pressed.emit(x, y)
+
+func _on_cell_marked(cell: Cell) -> void:
+	available_cells.erase(cell)
+
+	cell_marked.emit()
