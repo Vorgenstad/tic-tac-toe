@@ -15,4 +15,5 @@ unique_name_in_owner = true
 visible = false
 
 [connection signal="cell_marked" from="Board" to="." method="_on_board_cell_marked"]
+[connection signal="exit_actioned" from="UI" to="." method="_on_ui_exit_actioned"]
 [connection signal="restart_actioned" from="UI" to="." method="_on_ui_restart_actioned"]

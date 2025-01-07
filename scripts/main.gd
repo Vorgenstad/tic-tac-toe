@@ -1,9 +1,12 @@
 extends Node
 
-@export var gameScene: PackedScene
+@export var menu_scene: PackedScene
+@export var game_scene: PackedScene
 
-func _on_menu_start_actioned(secondPlayerType: Constants.SecondPlayerType) -> void:
-	var game: Game = gameScene.instantiate()
+func _setup_game(secondPlayerType: Constants.SecondPlayerType) -> Game:
+	var game: Game = game_scene.instantiate()
+
+	game.exit_actioned.connect(_on_game_exit_actioned)
 
 	var firstPlayer := HumanPlayer.new(Constants.CellValue.X)
 
@@ -11,9 +14,7 @@ func _on_menu_start_actioned(secondPlayerType: Constants.SecondPlayerType) -> vo
 
 	game.initialize(firstPlayer, secondPlayer)
 
-	add_child(game)
-
-	$Menu.queue_free()
+	return game
 
 func _build_second_player(secondPlayerType: Constants.SecondPlayerType) -> Player:
 	match secondPlayerType:
@@ -25,3 +26,19 @@ func _build_second_player(secondPlayerType: Constants.SecondPlayerType) -> Playe
 			assert(false, "Unexpected second player type")
 	
 	return null
+
+func _on_menu_start_actioned(secondPlayerType: Constants.SecondPlayerType) -> void:
+	var game := _setup_game(secondPlayerType)
+
+	add_child(game)
+
+	$Menu.queue_free()
+
+func _on_game_exit_actioned() -> void:
+	var menu := menu_scene.instantiate()
+
+	menu.start_actioned.connect(_on_menu_start_actioned)
+
+	add_child(menu)
+
+	$Game.queue_free()

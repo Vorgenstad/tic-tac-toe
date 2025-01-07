@@ -2,6 +2,7 @@ class_name UI
 extends CanvasLayer
 
 signal restart_actioned
+signal exit_actioned
 
 @onready var _info_label = %InfoLabel
 @onready var _x_score_label = %XScoreLabel
@@ -22,3 +23,6 @@ func display_game_over(winner: Constants.Winner, session: Session) -> void:
 
 func _on_restart_button_pressed() -> void:
 	restart_actioned.emit()
+
+func _on_menu_button_pressed() -> void:
+	exit_actioned.emit()

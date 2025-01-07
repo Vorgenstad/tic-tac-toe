@@ -1,6 +1,8 @@
 class_name Game
 extends Node2D
 
+signal exit_actioned
+
 var _plays := 0
 
 var _x_player: Player
@@ -105,3 +107,6 @@ func _next_turn() -> void:
 func _on_ui_restart_actioned() -> void:
 	_ui.visible = false
 	reset()	
+
+func _on_ui_exit_actioned() -> void:
+	exit_actioned.emit()

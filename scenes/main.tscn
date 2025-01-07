@@ -6,7 +6,8 @@
 
 [node name="Main" type="Node"]
 script = ExtResource("1_hlaqq")
-gameScene = ExtResource("2_ulr7q")
+menu_scene = ExtResource("1_d76a3")
+game_scene = ExtResource("2_ulr7q")
 
 [node name="Menu" parent="." instance=ExtResource("1_d76a3")]
 
