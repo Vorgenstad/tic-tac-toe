@@ -1,7 +1,11 @@
 class_name CpuPlayer
 extends Player
 
-func play() -> void:
-	var random_cell := _board.available_cells[randi() % _board.available_cells.size()]
+var _ai: AI
 
-	random_cell.mark(value)
+func initialize(board: Board) -> void:
+	_board = board
+	_ai = EasyAI.new(board, _value)
+
+func play() -> void:
+	_ai.play()

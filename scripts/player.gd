@@ -3,10 +3,10 @@ extends Node
 
 var _board: Board
 
-var value: Constants.CellValue
+var _value: Constants.CellValue
 
-func _init(cell_value: Constants.CellValue) -> void:
-	value = cell_value
+func _init(value: Constants.CellValue) -> void:
+	_value = value
 
 func initialize(board: Board) -> void:
 	_board = board

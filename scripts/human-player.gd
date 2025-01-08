@@ -10,4 +10,4 @@ func play() -> void:
 func _on_board_cell_pressed(x: int, y: int) -> void:
 	_board.cell_pressed.disconnect(_on_board_cell_pressed)
 
-	_board.mark_cell(x, y, value)
+	_board.mark_cell(x, y, _value)
