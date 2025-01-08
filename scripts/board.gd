@@ -4,14 +4,14 @@ extends CanvasLayer
 signal cell_pressed(x: int, y: int)
 signal cell_marked()
 
+var grid: Array
 var lines: Array
 var available_cells: Array[Cell]
 
-var _grid: Array
 var _line: Line2D
 
 func _ready() -> void:
-	_grid = [[], [], []]
+	grid = [[], [], []]
 
 	for x in 3:
 		for y in 3:
@@ -19,18 +19,18 @@ func _ready() -> void:
 
 			cell.connect("pressed", _on_cell_pressed.bind(x, y))
 
-			_grid[x].append(cell)
+			grid[x].append(cell)
 			available_cells.append(cell)
 	
 	lines = [
-		[_grid[0][0], _grid[0][1], _grid[0][2]],
-		[_grid[1][0], _grid[1][1], _grid[1][2]],
-		[_grid[2][0], _grid[2][1], _grid[2][2]],
-		[_grid[0][0], _grid[1][0], _grid[2][0]],
-		[_grid[0][1], _grid[1][1], _grid[2][1]],
-		[_grid[0][2], _grid[1][2], _grid[2][2]],
-		[_grid[0][0], _grid[1][1], _grid[2][2]],
-		[_grid[0][2], _grid[1][1], _grid[2][0]],
+		[grid[0][0], grid[0][1], grid[0][2]],
+		[grid[1][0], grid[1][1], grid[1][2]],
+		[grid[2][0], grid[2][1], grid[2][2]],
+		[grid[0][0], grid[1][0], grid[2][0]],
+		[grid[0][1], grid[1][1], grid[2][1]],
+		[grid[0][2], grid[1][2], grid[2][2]],
+		[grid[0][0], grid[1][1], grid[2][2]],
+		[grid[0][2], grid[1][1], grid[2][0]],
 	]
 
 	_line = Line2D.new()
@@ -44,7 +44,7 @@ func _ready() -> void:
 func reset() -> void:
 	available_cells.clear()
 
-	for row in _grid:
+	for row in grid:
 		for cell in row:
 			cell.reset()
 			available_cells.append(cell)
@@ -52,12 +52,12 @@ func reset() -> void:
 	_line.clear_points()
 
 func mark_cell(x: int, y: int, value: Constants.CellValue) -> void:
-	_grid[x][y].mark(value)
+	grid[x][y].mark(value)
 
-	available_cells.erase(_grid[x][y])
+	available_cells.erase(grid[x][y])
 
 func disable() -> void:
-	for row in _grid:
+	for row in grid:
 		for cell in row:
 			if !cell.marked:
 				cell.disabled = true

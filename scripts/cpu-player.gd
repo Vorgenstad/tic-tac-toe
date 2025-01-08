@@ -5,7 +5,7 @@ var _ai: AI
 
 func initialize(board: Board) -> void:
 	_board = board
-	_ai = EasyAI.new(board, _value)
+	_ai = HardAI.new(board, _value)
 
 func play() -> void:
 	_ai.play()
