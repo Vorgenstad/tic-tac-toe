@@ -1,4 +1,4 @@
-class_name HardAI
+class_name UnbeatableAI
 extends AI
 
 func play() -> void:
