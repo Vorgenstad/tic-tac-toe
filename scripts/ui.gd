@@ -20,7 +20,6 @@ func display_game_over(winner: Constants.Winner, session: Session) -> void:
 	_x_score_label.text = str(session.XScore)
 	_o_score_label.text = str(session.OScore)
 	
-
 func _on_restart_button_pressed() -> void:
 	restart_actioned.emit()
 
