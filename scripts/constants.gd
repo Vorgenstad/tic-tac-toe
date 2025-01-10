@@ -19,3 +19,10 @@ enum SecondPlayerType
 	HUMAN,
 	CPU,
 }
+
+enum Difficulty
+{
+	EASY,
+	MEDIUM,
+	IMPOSSIBLE
+}
