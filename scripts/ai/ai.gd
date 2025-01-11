@@ -22,6 +22,10 @@ func _play_smart() -> void:
 		if score == 2 || score == -2:
 			_mark_line(line)
 			return
+		
+		if _board.grid[1][1].value == Constants.CellValue.EMPTY:
+			_board.grid[1][1].mark(_value)
+			return
 	
 	for corner_cell in [_board.grid[0][0], _board.grid[0][2], _board.grid[2][0], _board.grid[2][2]]:
 		if corner_cell.value == Constants.CellValue.EMPTY:
