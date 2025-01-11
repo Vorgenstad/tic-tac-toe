@@ -2,10 +2,15 @@ class_name AI
 
 var _board: Board
 var _value: Constants.CellValue
+var _corner_cells: Array[Cell]
+var _side_cells: Array[Cell]
 
 func _init(board: Board, value: Constants.CellValue) -> void:
 	_board = board
 	_value = value
+
+	_corner_cells = [_board.grid[0][0], _board.grid[0][2], _board.grid[2][0], _board.grid[2][2]]
+	_side_cells = [_board.grid[0][1], _board.grid[1][0], _board.grid[1][2], _board.grid[2][1]]
 
 func play() -> void:
 	pass
@@ -23,14 +28,15 @@ func _play_smart() -> void:
 			_mark_line(line)
 			return
 		
-		if _board.grid[1][1].value == Constants.CellValue.EMPTY:
+	var center_value = _board.grid[1][1].value
+
+	match center_value:
+		Constants.CellValue.EMPTY:
 			_board.grid[1][1].mark(_value)
-			return
-	
-	for corner_cell in [_board.grid[0][0], _board.grid[0][2], _board.grid[2][0], _board.grid[2][2]]:
-		if corner_cell.value == Constants.CellValue.EMPTY:
-			corner_cell.mark(_value)
-			return
+		_value:
+			_play_random_side()
+		_:
+			_play_random_corner()
 
 func _get_score(line: Array):
 	return _get_cell_value_points(line[0].value) + _get_cell_value_points(line[1].value) + _get_cell_value_points(line[2].value)
@@ -48,4 +54,20 @@ func _mark_line(line: Array) -> void:
 	for cell in line:
 		if cell.value == Constants.CellValue.EMPTY:
 			cell.mark(_value)
+			return
+
+func _play_random_side() -> void:
+	_side_cells.shuffle()
+
+	for side_cell in _side_cells:
+		if side_cell.value == Constants.CellValue.EMPTY:
+			side_cell.mark(_value)
+			return
+
+func _play_random_corner() -> void:
+	_corner_cells.shuffle()
+
+	for corner_cell in _corner_cells:
+		if corner_cell.value == Constants.CellValue.EMPTY:
+			corner_cell.mark(_value)
 			return
