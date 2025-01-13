@@ -20,13 +20,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 100
 
-[node name="PlayerButton" type="Button" parent="ModeButtons"]
-layout_mode = 2
-text = "VS Player"
-
 [node name="CpuButton" type="Button" parent="ModeButtons"]
 layout_mode = 2
 text = "VS CPU"
+
+[node name="PlayerButton" type="Button" parent="ModeButtons"]
+layout_mode = 2
+text = "VS Player"
 
 [node name="DifficultyButtons" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
@@ -56,8 +56,8 @@ text = "Medium"
 layout_mode = 2
 text = "Impossible"
 
-[connection signal="pressed" from="ModeButtons/PlayerButton" to="." method="_on_player_button_pressed"]
 [connection signal="pressed" from="ModeButtons/CpuButton" to="." method="_on_cpu_button_pressed"]
+[connection signal="pressed" from="ModeButtons/PlayerButton" to="." method="_on_player_button_pressed"]
 [connection signal="pressed" from="DifficultyButtons/EasyButton" to="." method="_on_difficulty_button_pressed" binds= [0]]
 [connection signal="pressed" from="DifficultyButtons/MediumButton" to="." method="_on_difficulty_button_pressed" binds= [1]]
 [connection signal="pressed" from="DifficultyButtons/ImpossibleButton" to="." method="_on_difficulty_button_pressed" binds= [2]]
