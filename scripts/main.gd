@@ -27,7 +27,7 @@ func _build_second_player(secondPlayerType: Constants.SecondPlayerType, difficul
 	
 	return null
 
-func _on_menu_start_actioned(secondPlayerType: Constants.SecondPlayerType, difficulty: Constants.Difficulty) -> void:
+func _on_menu_start_actioned(secondPlayerType: Constants.SecondPlayerType, difficulty: Constants.Difficulty = Constants.Difficulty.EASY) -> void:
 	var game := _setup_game(secondPlayerType, difficulty)
 
 	add_child(game)
