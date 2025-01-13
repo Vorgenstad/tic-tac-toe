@@ -14,6 +14,9 @@ func _setup_game(secondPlayerType: Constants.SecondPlayerType, difficulty: Const
 
 	game.initialize(firstPlayer, secondPlayer)
 
+	game.add_child(firstPlayer)
+	game.add_child(secondPlayer)
+
 	return game
 
 func _build_second_player(secondPlayerType: Constants.SecondPlayerType, difficulty: Constants.Difficulty) -> Player:

@@ -20,4 +20,6 @@ func initialize(board: Board) -> void:
 			_ai = UnbeatableAI.new(_board, _value)
 
 func play() -> void:
+	await get_tree().create_timer(0.5).timeout
+
 	_ai.play()
