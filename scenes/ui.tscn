@@ -58,13 +58,17 @@ unique_name_in_owner = true
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="RestartButton" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="RestartButton" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Play again"
 
-[node name="MenuButton" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer"]
+[node name="MenuButton" type="Button" parent="PanelContainer/CenterContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Menu"
 
-[connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="PanelContainer/CenterContainer/VBoxContainer/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
